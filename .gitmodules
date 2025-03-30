@@ -16,3 +16,6 @@
 [submodule "tmux/.config/tmux/plugins/tmux-sensible"]
 	path = tmux/.config/tmux/plugins/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible
+[submodule "nvim/.config/nvim"]
+	path = nvim/.config/nvim
+	url = https://github.com/oathlesss/nvim
