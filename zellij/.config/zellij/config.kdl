@@ -1,0 +1,7 @@
+default_shell "fish"
+default_mode "locked"
+
+theme "catppuccin-mocha"
+
+// default_layout "compact"
+

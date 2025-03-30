@@ -1,0 +1,20 @@
+theme = catppuccin-mocha
+
+# font-family = "Comic Mono"
+# font-family = "Zed Sans"
+font-family = "Iosevka"
+
+macos-titlebar-style = transparent
+macos-option-as-alt = true
+
+keybind = cmd+t=unbind
+keybind = cmd+n=unbind
+keybind = cmd+c=unbind
+keybind = cmd+w=unbind
+keybind = cmd+opt+left=unbind
+keybind = cmd+opt+right=unbind
+
+shell-integration = fish
+
+background-opacity = 0.8
+background-blur = true
