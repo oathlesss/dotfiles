@@ -1,8 +1,10 @@
 theme = catppuccin-mocha
 
-# font-family = "Comic Mono"
+# font-family = "Fira Code"
 # font-family = "Zed Sans"
 font-family = "Iosevka"
+
+font-size = 18
 
 macos-titlebar-style = transparent
 macos-option-as-alt = true

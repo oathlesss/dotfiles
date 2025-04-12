@@ -1,8 +1,15 @@
 # cSpell: disable
 # Aerospace docs: https://nikitabobko.github.io/AeroSpace/guide
 after-startup-command = []
-exec-on-workspace-change = []
-on-focus-changed = ['move-mouse window-lazy-center']
+exec-on-workspace-change = [
+  '/bin/zsh',
+  '-c',
+  '/usr/bin/osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\""',
+]
+on-focus-changed = [
+  "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'",
+  'move-mouse window-lazy-center',
+]
 
 start-at-login = false
 
@@ -20,10 +27,10 @@ accordion-padding = 150
 [gaps]
 inner.horizontal = 20
 inner.vertical = 20
-outer.left = 20
-outer.top = 30
-outer.bottom = 20
-outer.right = 20
+outer.left = 10
+outer.top = 10
+outer.bottom = 10
+outer.right = 10
 
 [key-mapping]
 preset = 'qwerty'
@@ -85,6 +92,10 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty' #Ghostty
+run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox' #Firefox

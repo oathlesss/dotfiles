@@ -1,5 +1,5 @@
 # Define folder list
-STOW_FOLDERS := fish ghostty zellij lazynvim aerospace kickstart-nvim tmux bin starship nvim
+STOW_FOLDERS := fish ghostty zellij lazynvim aerospace kickstart-nvim tmux bin starship nvim simple-bar
 
 # Define color codes
 GREEN := \033[0;32m
