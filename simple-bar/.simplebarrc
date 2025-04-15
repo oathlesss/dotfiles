@@ -1,19 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/Jean-Tinland/simple-bar/refs/heads/master/lib/schemas/config.json",
   "global": {
-    "theme": "dark",
+    "theme": "auto",
     "compactMode": true,
     "floatingBar": true,
     "noBarBg": true,
-    "noColorInData": true,
+    "noColorInData": false,
     "bottomBar": false,
-    "sideDecoration": false,
-    "inlineSpacesOptions": false,
-    "spacesBackgroundColorAsForeground": true,
+    "sideDecoration": true,
+    "inlineSpacesOptions": true,
+    "spacesBackgroundColorAsForeground": false,
     "widgetsBackgroundColorAsForeground": true,
-    "widgetMaxWidth": "160px",
-    "slidingAnimationPace": 0,
-    "font": "JetBrains Mono, Monaco, Menlo, monospace",
+    "widgetMaxWidth": "100px",
+    "slidingAnimationPace": 4,
+    "font": "Iosevka, JetBrains Mono, Monaco, Menlo, monospace",
     "fontSize": "11px",
     "yabaiPath": "/opt/homebrew/bin/yabai",
     "aerospacePath": "/opt/homebrew/bin/aerospace",
@@ -70,7 +70,7 @@
     "hideDuplicateAppsInSpaces": false,
     "displayStickyWindowsSeparately": false,
     "hideCreateSpaceButton": false,
-    "hideEmptySpaces": false,
+    "hideEmptySpaces": true,
     "showOptionsOnHover": false,
     "switchSpacesWithoutYabai": false,
     "showOnlyFlashspaceSpaceIndex": false,
@@ -87,10 +87,10 @@
     "wifiWidget": true,
     "vpnWidget": false,
     "zoomWidget": false,
-    "soundWidget": false,
-    "micWidget": false,
-    "dateWidget": true,
-    "timeWidget": true,
+    "soundWidget": true,
+    "micWidget": true,
+    "dateWidget": false,
+    "timeWidget": false,
     "keyboardWidget": false,
     "spotifyWidget": true,
     "cryptoWidget": false,
@@ -116,7 +116,7 @@
   "cpuWidgetOptions": {
     "refreshFrequency": 2000,
     "showOnDisplay": "",
-    "displayAsGraph": false,
+    "displayAsGraph": true,
     "cpuMonitorApp": "Activity Monitor"
   },
   "gpuWidgetOptions": {
@@ -133,7 +133,7 @@
   "batteryWidgetOptions": {
     "refreshFrequency": 10000,
     "showOnDisplay": "",
-    "toggleCaffeinateOnClick": true,
+    "toggleCaffeinateOnClick": false,
     "caffeinateOption": ""
   },
   "networkWidgetOptions": {
@@ -142,7 +142,7 @@
     "networkDevice": "en0",
     "hideWifiIfDisabled": false,
     "toggleWifiOnClick": false,
-    "hideNetworkName": false
+    "hideNetworkName": true
   },
   "vpnWidgetOptions": {
     "refreshFrequency": 8000,
@@ -232,7 +232,21 @@
     "showSpecter": true
   },
   "userWidgets": {
-    "userWidgetsList": {}
+    "userWidgetsList": {
+      "1": {
+        "title": "Brew",
+        "icon": "Coffee",
+        "backgroundColor": "--accent",
+        "output": "export PATH=\"/opt/homebrew/bin:$PATH\" && brew outdated | wc -l | tr -d ' '",
+        "onClickAction": "",
+        "onRightClickAction": "",
+        "onMiddleClickAction": "",
+        "refreshFrequency": "1800000",
+        "showOnDisplay": "",
+        "active": true,
+        "noIcon": false
+      }
+    }
   },
   "customStyles": {
     "styles": "/* your custom css styles here */"

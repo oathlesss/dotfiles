@@ -20,7 +20,7 @@ default-root-container-layout = 'accordion' #Possible values: tiles|accordion
 default-root-container-orientation = 'auto'
 
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-automatically-unhide-macos-hidden-apps = false                  #focuses app regardless of visibility
+automatically-unhide-macos-hidden-apps = false
 
 accordion-padding = 150
 
@@ -95,11 +95,17 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty' #Ghostty
+if.during-aerospace-startup = true
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
-if.app-id = 'org.mozilla.firefox' #Firefox
+if.app-id = 'org.mozilla.firefox'  #Firefox
+if.during-aerospace-startup = true
 run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap' #Slack
+run = "move-node-to-workspace 3"
 
 #See: https://nikitabobko.github.io/AeroSpace/commands#layout
 ## Always Float
@@ -114,3 +120,7 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.1password.1password' # 1Password
 run = 'layout floating'
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = "move-node-to-workspace 4"
