@@ -1,17 +1,11 @@
 # cSpell: disable
 # Aerospace docs: https://nikitabobko.github.io/AeroSpace/guide
+start-at-login = true
 after-startup-command = []
-exec-on-workspace-change = [
-  '/bin/zsh',
-  '-c',
-  '/usr/bin/osascript -e "tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\""',
-]
+exec-on-workspace-change = []
 on-focus-changed = [
-  "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'",
   'move-mouse window-lazy-center',
 ]
-
-start-at-login = false
 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -94,18 +88,23 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty' #Ghostty
-if.during-aerospace-startup = true
-run = "move-node-to-workspace 1"
+if.app-id = 'com.mitchellh.ghostty'
+run = ['layout tiling', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
-if.app-id = 'org.mozilla.firefox'  #Firefox
-if.during-aerospace-startup = true
-run = "move-node-to-workspace 2"
+if.app-id = 'org.mozilla.firefox'
+run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap' #Slack
-run = "move-node-to-workspace 3"
+if.app-id = 'com.1password.1password'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+run = 'move-node-to-workspace 5'
 
 #See: https://nikitabobko.github.io/AeroSpace/commands#layout
 ## Always Float
@@ -120,7 +119,3 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.1password.1password' # 1Password
 run = 'layout floating'
-
-[[on-window-detected]]
-check-further-callbacks = true
-run = "move-node-to-workspace 4"
