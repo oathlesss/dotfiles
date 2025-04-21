@@ -1,0 +1,16 @@
+[user]
+  name = Ruben Hesselink
+  email = oathlesss@gmail.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBZuQHRq2R8+AwS2vlglQjyCfkBRfZ/iNFs9WHoTE9ii
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[commit]
+	gpgsign = true
+
+[includeIf "gitdir:~/work/"]
+  path = ~/work/.gitconfig
