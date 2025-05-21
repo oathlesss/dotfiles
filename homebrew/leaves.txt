@@ -1,0 +1,16 @@
+caarlos0/tap/timer
+eza
+fastfetch
+fd
+felixkratz/formulae/sketchybar
+fzf
+git
+glow
+jandedobbeleer/oh-my-posh/oh-my-posh
+jesseduffield/lazygit/lazygit
+neovim
+node
+ripgrep
+stow
+tmux
+zoxide
