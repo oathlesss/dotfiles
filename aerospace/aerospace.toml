@@ -61,11 +61,15 @@ on-focus-changed = "move-mouse window-lazy-center"
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 18
-inner.vertical =   18
-outer.left =       18
-outer.bottom =     18
-outer.top =        18
-outer.right =      18
+inner.vertical = 18
+outer.left = 18
+outer.bottom = 18
+outer.right = 18
+outer.top = [
+  { monitor."Built-in Retina Display" = 18 },
+  { monitor."LG HDR 4K" = 44 },
+  18
+]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

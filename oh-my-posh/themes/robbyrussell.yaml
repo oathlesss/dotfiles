@@ -1,27 +1,31 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
-version: 2
-final_space: true
 blocks:
-  - type: prompt
-    alignment: left
-    segments:
-      - type: text
-        style: plain
-        foreground_templates:
-          - "{{if gt .Code 0}}#D9534F{{end}}"
-          - "{{if eq .Code 0}}#5eff6c{{end}}"
-          - "{{if lt .Code 0}}#D9534F{{end}}"
-        template: "➜ "
-      - type: path
-        style: plain
-        template: " {{ .Path }}"
-        properties:
-          style: folder
-        foreground: "#5ef1ff"
-      - type: git
-        style: plain
-        template: " <#5FAAE8>git:(</>{{ .HEAD }}<#5FAAE8>)</>"
-        properties:
-          branch_icon: ""
-        foreground: "#D9534F"
+    - type: prompt
+      alignment: left
+      segments:
+        - properties:
+            cache_duration: none
+          template: '➜ '
+          type: text
+          style: plain
+          foreground_templates:
+            - '{{if gt .Code 0}}#D9534F{{end}}'
+            - '{{if eq .Code 0}}#5eff6c{{end}}'
+            - '{{if lt .Code 0}}#D9534F{{end}}'
+        - properties:
+            cache_duration: none
+            style: folder
+          template: ' {{ .Path }}'
+          foreground: '#5ef1ff'
+          type: path
+          style: plain
+        - properties:
+            branch_icon: ""
+            cache_duration: none
+          template: ' <#5FAAE8>git:(</>{{ .HEAD }}<#5FAAE8>)</>'
+          foreground: '#D9534F'
+          type: git
+          style: plain
+version: 3
+final_space: true

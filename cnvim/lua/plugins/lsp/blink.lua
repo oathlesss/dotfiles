@@ -3,7 +3,7 @@ return {
 		"saghen/blink.cmp",
 		lazy = true,
 		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "rafamadriz/friendly-snippets", "Kaiser-Yang/blink-cmp-git" },
+		dependencies = { "rafamadriz/friendly-snippets" },
 
 		-- use a release tag to download pre-built binaries
 		version = "1.*",
@@ -63,19 +63,7 @@ return {
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
 				default = { "lsp", "path", "snippets" },
-				providers = {
-					git = {
-						module = "blink-cmp-git",
-						name = "Git",
-						-- only enable this source when filetype is gitcommit, markdown, or 'octo'
-						enabled = function()
-							return vim.tbl_contains({ "octo", "gitcommit", "markdown" }, vim.bo.filetype)
-						end,
-						opts = {
-							-- options for the blink-cmp-git
-						},
-					},
-				},
+				providers = {},
 				per_filetype = {
 					lua = { "lsp", "buffer", "path", "snippets" },
 					markdown = { "lsp", "path", "snippets" }, -- do not add 'buffer' here, it's slow AF

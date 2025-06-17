@@ -4,8 +4,8 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
 fi
 
 # Oh My Posh 
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/powerlevel10k-custom.yaml)"
-# eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/robbyrussell.yaml)"
+# eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/powerlevel10k-custom.yaml)"
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/robbyrussell.yaml)"
 # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/robbyrussell.omp.json)"
 
 # Set the directory we want to store zinit and plugins
@@ -98,7 +98,6 @@ alias ltree="eza --tree --level=2 --long --icons"
 
 # Nvim
 alias n="nvim"
-alias lnvim="NVIM_APPNAME=lazynvim nvim"
 alias cnvim="NVIM_APPNAME=cnvim nvim"
 
 
@@ -127,3 +126,8 @@ export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agen
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
+
+# Auto start tmux
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
