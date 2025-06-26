@@ -141,6 +141,8 @@ vim.o.timeoutlen = 300
 vim.o.splitright = true
 vim.o.splitbelow = true
 
+vim.o.colorcolumn = '88'
+
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -346,7 +348,6 @@ require('lazy').setup({
       spec = {
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
   },
@@ -394,6 +395,14 @@ require('lazy').setup({
           Snacks.picker.help()
         end,
         desc = '[S]earch [H]elp',
+      },
+      -- git diff from snack
+      {
+        '<leader>gd',
+        function()
+          Snacks.picker.git_diff()
+        end,
+        desc = '[S]earch [D]iff',
       },
       {
         '<leader>sk',

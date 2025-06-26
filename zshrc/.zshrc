@@ -126,6 +126,7 @@ export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agen
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
+source <(COMPLETE=zsh tms)
 
 # Auto start tmux
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
