@@ -9,10 +9,6 @@ _A powerful terminal multiplexer with custom configuration_
 
 </div>
 
-## 📸 Preview
-
-![Tmux](../docs/images/tmux.png)
-
 ## ✨ Features
 
 - Session persistence

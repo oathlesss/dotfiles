@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:02569B,100:005078&height=200&section=header&text=~/dotfiles&fontSize=60&fontColor=ffffff&animation=fadeIn&fontAlignY=38" alt="Dotfiles Banner"/>
+<img src="https://capsule-render.vercel.app/api?type=blur&height=300&color=gradient&text=~/dotfiles&textBg=false&reversal=false" alt="Dotfiles Banner"/>
 
 <br/>
 <img src="https://img.shields.io/badge/platform-macOS-lightgrey?style=for-the-badge&logoColor=black" alt="Platform: macOS"/>
@@ -12,12 +12,11 @@ _A carefully curated collection of configuration files for a productive developm
 
 </div>
 
-<!-- ## 📸 Screenshots -->
-<!---->
-<!-- <div align="center"> -->
-<!--   <img src="./docs/images/nvim.png" alt="Terminal Setup"/> -->
-<!--   <img src="./docs/images/desktop.png" alt="Desktop Environment"/> -->
-<!-- </div> -->
+## 📸 Screenshots
+
+<div align="center">
+  <img src="./docs/images/nvim.png" alt="Terminal Setup"/>
+</div>
 
 <!-- _For more screenshots, see [Showcase](docs/showcase.md)_ -->
 
@@ -56,7 +55,7 @@ brew install git stow
 **1. Clone**
 
 ```bash
-cd ~ && git clone git@github.com:PraveenGongada/dotfiles.git
+cd ~ && git clone git@github.com:oathlesss/dotfiles.git
 cd dotfiles
 ```
 
@@ -101,3 +100,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [GNU Stow](https://www.gnu.org/software/stow/) for symlink management
 - All the open-source projects that made these configurations possible
+- [PraveenGongada](https://github.com/PraveenGongada/dotfiles) for the initial dotfiles
