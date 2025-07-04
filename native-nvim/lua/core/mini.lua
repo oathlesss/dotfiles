@@ -106,6 +106,8 @@ later(function() require("mini.surround").setup() end)
 later(function() require("mini.completion").setup() end)
 -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-git.md#default-config
 later(function() require("mini.git").setup() end)
+-- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump.md#default-config
+later(function() require("mini.jump").setup() end)
 later(function()
   add({
     source = 'nvim-treesitter/nvim-treesitter',
