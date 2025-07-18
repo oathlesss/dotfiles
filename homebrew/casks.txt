@@ -5,11 +5,13 @@ eset-cyber-security
 font-iosevka
 font-noto-sans-mono
 font-sf-pro
+font-victor-mono-nerd-font
 ghostty
 iina
 keycastr
 kitty
 microsoft-excel
+ngrok
 orbstack
 postman
 raycast

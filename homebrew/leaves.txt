@@ -1,3 +1,4 @@
+basedpyright
 bzip2
 caarlos0/tap/timer
 cloudflared
@@ -11,16 +12,17 @@ ghostscript
 git
 gitleaks
 glow
+gopls
 imagemagick
 jandedobbeleer/oh-my-posh/oh-my-posh
 jesseduffield/lazygit/lazygit
 jq
 neovim
-node
 postgresql@13
 postgresql@14
 ripgrep
 sshuttle
+sst/tap/opencode
 stow
 tectonic
 tlrc
