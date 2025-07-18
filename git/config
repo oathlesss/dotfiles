@@ -36,6 +36,9 @@
     renames = copies  # detect copies as renames in diffs
     interHunkContext = 10  # merge near hunks in diffs
 
+[difftool]
+  prompt = false
+
 [init]
     defaultBranch = main
 

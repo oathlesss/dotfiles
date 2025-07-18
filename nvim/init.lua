@@ -29,6 +29,10 @@ require("core.colorschemes")
 require("core.mini-modules")
 require("core.barbecue")
 require("core.supermaven")
+require("core.undotree")
+require("core.oil")
+require("core.overseer")
+require("core.harpoon")
 
 -- keybinds
 require("core.keybinds")

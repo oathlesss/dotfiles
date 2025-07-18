@@ -68,14 +68,6 @@ end
 -- find keymaps
 keymap("n", "<leader>ff", function() require('mini.pick').builtin.files() end, { desc = 'Find File' })
 keymap("n", "<leader>fr", function() require('mini.pick').builtin.resume() end, { desc = 'Find Resume' })
-keymap("n", "<leader>e", function()
-	local buffer_name = vim.api.nvim_buf_get_name(0)
-	if buffer_name == "" or string.match(buffer_name, "Starter") then
-		require('mini.files').open(vim.loop.cwd())
-	else
-		require('mini.files').open(vim.api.nvim_buf_get_name(0))
-	end
-end, { desc = 'Find Here' })
 keymap("n", "<leader><space>", function() require('mini.pick').builtin.buffers() end, { desc = 'Find Buffer' })
 keymap("n", "<leader>fg", function() require('mini.pick').builtin.grep_live() end, { desc = 'Find String' })
 keymap("n", "<leader>fG", function()
@@ -86,3 +78,13 @@ keymap("n", "<leader>fh", function() require('mini.pick').builtin.help() end, { 
 keymap("n", "<leader>fl", function() require('mini.extra').pickers.hl_groups() end, { desc = 'Find HL Groups' })
 keymap("n", "<leader>fc", pick_colorscheme, { desc = 'Change Colorscheme' })
 keymap('n', ',', function() require('mini.extra').pickers.buf_lines({ scope = 'current' }) end, { nowait = true, desc = 'Search Lines' })
+
+-- undotree
+keymap('n', '<leader>ut', vim.cmd.UndotreeToggle, { desc = "Undotree" })
+
+-- oil
+keymap('n', '<leader>e', function() require('oil').open() end, { desc = "Oil" })
+
+-- overseer
+keymap('n', '<leader>or', vim.cmd.OverseerRun, { desc = "Overseer Run" })
+keymap('n', '<leader>ot', vim.cmd.OverseerToggle, { desc = "Overseer Toggle" })
