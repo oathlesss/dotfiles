@@ -122,12 +122,15 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR="nvim"
 export XDG_CONFIG_HOME=$HOME/.config
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 source <(COMPLETE=zsh tms)
+[ -s "/Users/rubenhesselink/.bun/_bun" ] && source "/Users/rubenhesselink/.bun/_bun"
 
 # Auto start tmux
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
