@@ -3,11 +3,6 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Oh My Posh 
-# eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/powerlevel10k-custom.yaml)"
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/robbyrussell.yaml)"
-# eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/robbyrussell.omp.json)"
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -20,12 +15,14 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+# Disable async git prompt to avoid _omz_register_handler errors
+zstyle ':omz:alpha:lib:git' async-prompt no
+
 # Add in zsh plugins
 zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light jeffreytse/zsh-vi-mode
 
 # Add in snippets
 zinit snippet OMZL::git.zsh
@@ -52,19 +49,6 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
-
-# Zsh Vi Mode 
-# Following 4 lines modify the escape key to `jj`
-ZVM_VI_ESCAPE_BINDKEY=jj
-ZVM_VI_INSERT_ESCAPE_BINDKEY=$ZVM_VI_ESCAPE_BINDKEY
-ZVM_VI_VISUAL_ESCAPE_BINDKEY=$ZVM_VI_ESCAPE_BINDKEY
-ZVM_VI_OPPEND_ESCAPE_BINDKEY=$ZVM_VI_ESCAPE_BINDKEY
-
-function zvm_after_lazy_keybindings() {
-  # Remap toggle history 
-  zvm_bindkey vicmd 'j' up-line-or-history
-  zvm_bindkey vicmd 'k' down-line-or-history
-}
 
 # Source .fzf.zsh so that the ctrl+r bindkey is given back fzf
 zvm_after_init_commands+=('[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh')
@@ -100,18 +84,6 @@ alias ltree="eza --tree --level=2 --long --icons"
 alias n="nvim"
 alias cnvim="NVIM_APPNAME=cnvim nvim"
 
-
-# Pomodoro
-function work () {
-  timer 25m
-  osascript -e 'display notification "Pomodoro" with title "Work Timer is up! Take a Break 😊" sound name "Crystal"'
-}
-
-function rest () {
-  timer 5m
-  osascript -e 'display notification "Pomodoro" with title "Break is over! Get back to work 😬" sound name "Crystal"'
-}
-
 # Exported Paths
 export ZSH="$HOME/.config/zshrc"
 export GOPATH="$HOME/go"
@@ -124,7 +96,57 @@ export XDG_CONFIG_HOME=$HOME/.config
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+export PATH="$HOME/.config/scripts:$PATH"
 
+bindkey -s '^F' 'tmux-sessionizer.sh\n'
+
+# prompt
+setopt prompt_subst
+git_prompt_info() {
+  local branch
+  branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null) || return
+
+  # shorten if too long
+  local maxlen=20
+  if [[ ${#branch} -gt $maxlen ]]; then
+    local half=$(( (maxlen - 3) / 2 ))
+    branch="${branch[1,$half]}...${branch[-$half,-1]}"
+  fi
+
+  # check if repo has uncommitted changes
+  if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null; then
+    echo "%F{red}$branch%f"   # red if uncommitted changes
+    return
+  fi
+
+  # check sync status with remote
+  local branch_status
+  branch_status=$(git status --porcelain=2 --branch 2>/dev/null | grep '^# branch.ab')
+
+  if [[ $branch_status == *ahead* || $branch_status == *behind* ]]; then
+    echo "%F{red}$branch%f"   # red if out of sync with remote
+  else
+    echo "%F{green}$branch%f" # green if clean & up-to-date
+  fi
+}
+short_pwd() {
+  local path=$PWD
+  local maxlen=20
+
+  # replace $HOME with ~
+	path="${path/#${HOME}/~}"
+
+  if [[ ${#path} -gt $maxlen ]]; then
+    local half=$(( (maxlen - 3) / 2 ))
+    echo "${path[1,$half]}...${path[-$half,-1]}"
+  else
+    echo "$path"
+  fi
+}
+PROMPT='%F{blue}oathless%f %F{#d4982a}$(short_pwd)%f %# '
+RPROMPT='$(git_prompt_info)'
 
 # Shell integrations
 eval "$(fzf --zsh)"
@@ -136,3 +158,6 @@ source <(COMPLETE=zsh tms)
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
   tmux attach-session -t default || tmux new-session -s default
 fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

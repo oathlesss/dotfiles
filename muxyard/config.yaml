@@ -1,0 +1,43 @@
+repo_directories:
+  - ~/personal/repos
+  - ~/work/repos
+  - /Users/rubenhesselink
+
+templates:
+  - name: basic
+    description: Single window with shell
+    windows:
+      - name: main
+        command: ""
+
+  - name: coding
+    description: Editor, server, and shell windows
+    focused_window: editor
+    windows:
+      - name: editor
+        command: nvim .
+      - name: server
+        command: ""
+      - name: shell
+        command: ""
+
+# UI Color Configuration
+# Colors can be specified as:
+# - Hex codes: "#FF0000", "#FAFAFA"  
+# - Color names: "red", "blue", "green"
+# - ANSI color codes: "1", "2", "205"
+colors:
+  title:
+    foreground: "#FAFAFA"      # Title text color
+    background: "#7D56F4"      # Title background color
+  selected: "#EE6FF8"          # Color for selected items
+  dimmed: "#626262"            # Color for dimmed/inactive text  
+  help: "#626262"              # Color for help text
+  error: "#FF0000"             # Color for error messages
+  success: "#00FF00"           # Color for success messages
+  border: "#874BFD"            # Color for borders
+  input: "#874BFD"             # Color for input field borders
+  focused_input: "#FF75B7"     # Color for focused input borders
+  spinner: "205"               # Color for loading spinner
+  highlight: "#FF75B7"         # Color for highlighted search matches
+  filter_border: "#FF75B7"     # Color for filter input border
