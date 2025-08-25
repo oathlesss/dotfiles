@@ -102,9 +102,33 @@ export PATH="$HOME/.config/scripts:$PATH"
 
 bindkey -s '^F' 'tmux-sessionizer.sh\n'
 
+# Toggleable prompt features
+SHOW_TIME=true
+SHOW_GIT_STATUS=true
+SHOW_PYTHON_VENV=true
+SHOW_DOCKER_STATUS=true
+
 # prompt
 setopt prompt_subst
+
+# Time display function
+time_info() {
+  if [[ "$SHOW_TIME" = true ]]; then
+    echo "%F{cyan}[%D{%H:%M:%S}]%f"
+  fi
+}
+
+# Git status function with ahead/behind arrows
 git_prompt_info() {
+  if [[ "$SHOW_GIT_STATUS" = false ]]; then
+    return
+  fi
+
+  # Check if we're in a git repository
+  if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    return
+  fi
+
   local branch
   branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null) || return
 
@@ -117,20 +141,61 @@ git_prompt_info() {
 
   # check if repo has uncommitted changes
   if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null; then
-    echo "%F{red}$branch%f"   # red if uncommitted changes
+    echo "%F{red}$branch ✗%f"   # red if uncommitted changes
     return
   fi
 
-  # check sync status with remote
-  local branch_status
-  branch_status=$(git status --porcelain=2 --branch 2>/dev/null | grep '^# branch.ab')
+  # get ahead/behind counts using git rev-list
+  local ahead behind
+  ahead=$(git rev-list --count HEAD..@{u} 2>/dev/null)
+  behind=$(git rev-list --count @{u}..HEAD 2>/dev/null)
 
-  if [[ $branch_status == *ahead* || $branch_status == *behind* ]]; then
-    echo "%F{red}$branch%f"   # red if out of sync with remote
+  if [[ -n $ahead || -n $behind ]]; then
+    local info=""
+    [[ -n $ahead && $ahead -gt 0 ]] && info+="↑$ahead "
+    [[ -n $behind && $behind -gt 0 ]] && info+="↓$behind "
+    echo "%F{yellow}$branch $info%f"  # yellow if ahead/behind but clean
   else
-    echo "%F{green}$branch%f" # green if clean & up-to-date
+    echo "%F{green}$branch ✓%f"       # green if clean & up-to-date
   fi
 }
+
+# Python virtual environment status
+python_venv_info() {
+  if [[ "$SHOW_PYTHON_VENV" = false ]]; then
+    return
+  fi
+
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    echo "%F{blue}($(basename $VIRTUAL_ENV))%f"
+  fi
+}
+
+# Docker compose status for current directory
+docker_compose_info() {
+  if [[ "$SHOW_DOCKER_STATUS" = false ]]; then
+    return
+  fi
+
+  if command -v docker-compose &> /dev/null; then
+    local compose_file=""
+    if [[ -f "docker-compose.yml" ]]; then
+      compose_file="docker-compose.yml"
+    elif [[ -f "docker-compose.yaml" ]]; then
+      compose_file="docker-compose.yaml"
+    fi
+
+    if [[ -n "$compose_file" ]]; then
+      # Check if any containers are running for this compose file
+      if docker-compose -f "$compose_file" ps -q | grep -q . 2>/dev/null; then
+        echo "%F{green}[dc]%f"
+      else
+        echo "%F{red}[dc]%f"
+      fi
+    fi
+  fi
+}
+
 short_pwd() {
   local path=$PWD
   local maxlen=20
@@ -145,8 +210,9 @@ short_pwd() {
     echo "$path"
   fi
 }
-PROMPT='%F{blue}oathless%f %F{#d4982a}$(short_pwd)%f %# '
-RPROMPT='$(git_prompt_info)'
+
+PROMPT='%F{blue}oathless%f $(time_info) %F{#d4982a}$(short_pwd)%f $(python_venv_info) %# '
+RPROMPT='$(git_prompt_info) $(docker_compose_info)'
 
 # Shell integrations
 eval "$(fzf --zsh)"
