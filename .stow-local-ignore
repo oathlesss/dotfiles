@@ -3,3 +3,12 @@
 .stowrc
 .DS_Store
 README.*
+.gitmodules
+docs
+homebrew
+justfile
+LICENSE
+README.md
+tests
+wallpapers
+.github
