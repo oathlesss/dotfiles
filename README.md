@@ -1,9 +1,11 @@
+# Dotfiles
+
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=blur&height=300&color=gradient&text=~/dotfiles&textBg=false&reversal=false" alt="Dotfiles Banner"/>
+<img src="https://capsule-render.vercel.app/api?type=blur&amp;height=300&amp;color=gradient&amp;text=~/dotfiles&amp;textBg=false&amp;reversal=false" alt="Dotfiles Banner"/>
 
 <br/>
-<img src="https://img.shields.io/badge/platform-macOS-lightgrey?style=for-the-badge&logoColor=black" alt="Platform: macOS"/>
+<img src="https://img.shields.io/badge/platform-macOS-lightgrey?style=for-the-badge&amp;logoColor=black" alt="Platform: macOS"/>
 <img src="https://img.shields.io/github/stars/oathlesss/dotfiles?style=for-the-badge" alt="Stars"/>
 <img src="https://img.shields.io/github/forks/oathlesss/dotfiles?style=for-the-badge" alt="Forks"/>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-02569B?style=for-the-badge" alt="License: MIT"/></a>
@@ -16,10 +18,10 @@ _A carefully curated collection of configuration files for a productive developm
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="./docs/images/nvim.png" alt="Terminal Setup"/>
+  <img src="./docs/images/nvim.png" alt="Neovim Setup"/>
 </div>
 
-<!-- _For more screenshots, see [Showcase](docs/showcase.md)_ -->
+_For more screenshots, see [Showcase](docs/showcase.md)_
 
 ## 📦 What's Inside
 
@@ -31,9 +33,12 @@ This repository contains configuration files for various tools and applications:
 - **[kitty](kitty/)** - GPU-based terminal emulator
 - **[sketchybar](sketchybar/)** - macOS status bar replacement
 - **[aerospace](aerospace/)** - Window manager for macOS
-- **[oh-my-posh](oh-my-posh/)** - Prompt theme engine
+- **[ghostty](ghostty/)** - Terminal emulator configuration
+- **[git](git/)** - Git configuration
 - **[homebrew](homebrew/)** - Package manager backup
 - **[wallpapers](wallpapers/)** - Custom wallpapers
+- **[muxyard](muxyard/)** - Mux configuration
+- **[scripts](scripts/)** - Utility scripts
 
 ## 🚀 Installation
 
@@ -51,6 +56,12 @@ This repository contains configuration files for various tools and applications:
 brew install git stow
 ```
 
+**Just**
+
+```bash
+brew install just
+```
+
 ### Setup Steps
 
 **1. Clone**
@@ -63,7 +74,7 @@ cd dotfiles
 **2. Symlink**
 
 ```bash
-stow .
+just stow
 ```
 
 **3. Configure ZSH**
@@ -82,8 +93,7 @@ xargs brew install --cask < ~/.config/homebrew/casks.txt
 ### Backup Homebrew Packages
 
 ```bash
-brew leaves -r > ~/.config/homebrew/leaves.txt
-brew list --cask > ~/.config/homebrew/casks.txt
+just brew-update
 ```
 
 ### Additional Setup
@@ -92,6 +102,38 @@ Some components require additional setup steps after installation:
 
 - **SketchyBar**: See [SketchyBar README](sketchybar/README.md) for icons installation and configuration steps
 - **Tmux**: See [TMUX README](tmux/README.md) for TPM installation and plugin setup
+- **Neovim**: See [Neovim Docs](nvim/docs/) for customization, adding plugins/LSP, and troubleshooting
+
+## 🛠️ Usage with Justfile
+
+The justfile provides convenient commands for managing the dotfiles:
+
+- `just stow` - Symlink configurations
+- `just brew-install <package>` - Install a Homebrew package and update lists
+- `just brew-uninstall <package>` - Uninstall a Homebrew package and update lists
+- `just brew-update` - Update package lists from installed packages
+- `just test` - Run all BATS tests
+- `just help` - List all commands
+
+Install Just if not already: `brew install just`
+
+## 🧪 Testing
+
+This project includes comprehensive tests using BATS (Bash Automated Testing System).
+
+### Running Tests
+
+1. Install BATS: `brew install bats-core`
+2. Run all tests: `just test`
+
+Tests are organized in the [tests/](tests/) directory and cover:
+- Syntax and configuration validation
+- Symlink validation
+- Integration tests for tools like Neovim, Tmux, Sketchybar
+- Installation script validation
+- Custom script functionality
+
+CI tests run on every push via GitHub Actions.
 
 ## 📝 License
 
