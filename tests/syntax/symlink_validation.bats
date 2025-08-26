@@ -35,3 +35,32 @@ setup() {
   run grep "README" "${PROJECT_ROOT}/.stow-local-ignore"
   [ "$status" -eq 0 ]
 }
+
+@test "Directory structure is valid for stow" {
+  # Check that top-level directories exist for stowing
+  [ -d "${PROJECT_ROOT}/zshrc" ]
+  [ -d "${PROJECT_ROOT}/nvim" ]
+  [ -d "${PROJECT_ROOT}/tmux" ]
+  [ -d "${PROJECT_ROOT}/kitty" ]
+  [ -d "${PROJECT_ROOT}/sketchybar" ]
+}
+
+@test "Configuration files have proper permissions" {
+  # Check that shell configuration is readable
+  [ -r "${PROJECT_ROOT}/zshrc/.zshrc" ]
+  
+  # Check that tmux configuration is readable
+  [ -r "${PROJECT_ROOT}/tmux/tmux.conf" ]
+  
+  # Check that nvim configuration is readable
+  [ -r "${PROJECT_ROOT}/nvim/init.lua" ]
+}
+
+@test "Essential tool configurations exist" {
+  # Check that all major tool configurations are present
+  [ -f "${PROJECT_ROOT}/zshrc/.zshrc" ]
+  [ -f "${PROJECT_ROOT}/tmux/tmux.conf" ]
+  [ -f "${PROJECT_ROOT}/nvim/init.lua" ]
+  [ -f "${PROJECT_ROOT}/sketchybar/sketchybarrc" ]
+  [ -f "${PROJECT_ROOT}/kitty/kitty.conf" ]
+}
