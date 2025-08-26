@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          brew install bats-core yamllint shellcheck lua
+          brew install bats-core yamllint shellcheck lua neovim tmux
 
       - name: Set up Python
         uses: actions/setup-python@v5

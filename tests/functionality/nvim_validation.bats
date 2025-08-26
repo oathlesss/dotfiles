@@ -7,10 +7,9 @@ setup() {
   PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." >/dev/null 2>&1 && pwd)"
 }
 
-@test "Neovim configuration loads without errors" {
-  # Test that nvim can load the configuration without errors
-  run nvim --headless -c 'echo "Config loaded successfully"' -c 'qa!'
-  [ "$status" -eq 0 ]
+@test "Neovim configuration files exist" {
+  # Check that essential configuration files exist
+  [ -f "${PROJECT_ROOT}/nvim/init.lua" ]
 }
 
 @test "Neovim Lua files have valid syntax" {
@@ -19,7 +18,13 @@ setup() {
   [ "$status" -eq 0 ]
 }
 
-@test "Neovim configuration files exist" {
-  # Check that essential configuration files exist
-  [ -f "${PROJECT_ROOT}/nvim/init.lua" ]
+@test "Neovim configuration loads without errors (if nvim is available)" {
+  # Skip test if nvim is not installed
+  if ! command -v nvim &> /dev/null; then
+    skip "nvim not found"
+  fi
+  
+  # Test that nvim can load the configuration without errors
+  run nvim --headless -c 'echo "Config loaded successfully"' -c 'qa!'
+  [ "$status" -eq 0 ]
 }

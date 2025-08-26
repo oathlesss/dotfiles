@@ -11,12 +11,22 @@ setup() {
   [ -f "${PROJECT_ROOT}/tmux/tmux.conf" ]
 }
 
-@test "Tmux configuration has valid syntax" {
+@test "Tmux configuration has valid syntax (if tmux is available)" {
+  # Skip test if tmux is not installed
+  if ! command -v tmux &> /dev/null; then
+    skip "tmux not found"
+  fi
+  
   run tmux -f "${PROJECT_ROOT}/tmux/tmux.conf" -V
   [ "$status" -eq 0 ]
 }
 
-@test "Tmux configuration can be loaded" {
+@test "Tmux configuration can be loaded (if tmux is available)" {
+  # Skip test if tmux is not installed
+  if ! command -v tmux &> /dev/null; then
+    skip "tmux not found"
+  fi
+  
   # Test that tmux can load the configuration without errors
   run bash -c "tmux -f '${PROJECT_ROOT}/tmux/tmux.conf' start-server \; has-session 2>/dev/null || true"
   [ "$status" -eq 0 ]
