@@ -1,0 +1,50 @@
+name: Test Dotfiles
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Homebrew
+      id: set-up-homebrew
+      uses: Homebrew/actions/setup-homebrew@master
+    
+    - name: Install dependencies
+      run: |
+        brew install bats-core yamllint shellcheck lua
+        
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        
+    - name: Install Python dependencies
+      run: |
+        pip install uv
+        uv venv
+        source .venv/bin/activate
+        uv pip install tomlcheck
+        
+    - name: Run syntax validation tests
+      run: |
+        source .venv/bin/activate
+        bats -r tests/syntax/
+        
+    - name: Run functionality tests
+      run: |
+        source .venv/bin/activate
+        bats -r tests/functionality/
+        
+    - name: Run installation tests
+      run: |
+        source .venv/bin/activate
+        bats -r tests/install/

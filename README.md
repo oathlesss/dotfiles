@@ -7,6 +7,7 @@
 <img src="https://img.shields.io/github/stars/oathlesss/dotfiles?style=for-the-badge" alt="Stars"/>
 <img src="https://img.shields.io/github/forks/oathlesss/dotfiles?style=for-the-badge" alt="Forks"/>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-02569B?style=for-the-badge" alt="License: MIT"/></a>
+<a href="https://github.com/oathlesss/dotfiles/actions/workflows/test.yml"><img src="https://github.com/oathlesss/dotfiles/actions/workflows/test.yml/badge.svg" alt="Test Status"/></a>
 
 _A carefully curated collection of configuration files for a productive development environment_
 
