@@ -5,24 +5,9 @@ setup() {
   SCRIPT_DIR="$(cd "$(dirname "${BATS_TEST_FILENAME}")" >/dev/null 2>&1 && pwd)"
   # Navigate to the project root
   PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." >/dev/null 2>&1 && pwd)"
-  
-  # In GitHub Actions, we might need to look in the current directory
-  if [ ! -d "${PROJECT_ROOT}/nvim" ] && [ -d "./nvim" ]; then
-    PROJECT_ROOT="."
-  fi
 }
 
 @test "Neovim configuration files exist" {
-  # Debug information for GitHub Actions
-  echo "Looking for nvim in: ${PROJECT_ROOT}/nvim/"
-  if [ -d "${PROJECT_ROOT}/nvim" ]; then
-    ls -la "${PROJECT_ROOT}/nvim/" | head -10
-  else
-    echo "nvim directory not found at ${PROJECT_ROOT}/nvim/"
-    # Try to find nvim directory
-    find . -name "nvim" -type d | head -5
-  fi
-  
   # Check that essential configuration files exist
   [ -f "${PROJECT_ROOT}/nvim/init.lua" ]
 }

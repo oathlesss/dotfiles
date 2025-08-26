@@ -41,14 +41,6 @@ jobs:
           source .venv/bin/activate
           bats -r tests/syntax/
 
-      - name: Debug directory structure
-        run: |
-          echo "Current directory: $(pwd)"
-          echo "Directory contents:"
-          ls -la
-          echo "nvim directory contents:"
-          ls -la nvim/ || echo "nvim directory not found"
-
       - name: Run functionality tests
         run: |
           source .venv/bin/activate
