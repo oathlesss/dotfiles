@@ -171,30 +171,30 @@ python_venv_info() {
   fi
 }
 
-# Docker compose status for current directory
-docker_compose_info() {
-  if [[ "$SHOW_DOCKER_STATUS" = false ]]; then
-    return
-  fi
-
-  if command -v docker-compose &> /dev/null; then
-    local compose_file=""
-    if [[ -f "docker-compose.yml" ]]; then
-      compose_file="docker-compose.yml"
-    elif [[ -f "docker-compose.yaml" ]]; then
-      compose_file="docker-compose.yaml"
-    fi
-
-    if [[ -n "$compose_file" ]]; then
-      # Check if any containers are running for this compose file
-      if docker-compose -f "$compose_file" ps -q | grep -q . 2>/dev/null; then
-        echo "%F{green}[dc]%f"
-      else
-        echo "%F{red}[dc]%f"
-      fi
-    fi
-  fi
-}
+# # Docker compose status for current directory
+# docker_compose_info() {
+#   if [[ "$SHOW_DOCKER_STATUS" = false ]]; then
+#     return
+#   fi
+#
+#   if command -v docker-compose &> /dev/null; then
+#     local compose_file=""
+#     if [[ -f "docker-compose.yml" ]]; then
+#       compose_file="docker-compose.yml"
+#     elif [[ -f "docker-compose.yaml" ]]; then
+#       compose_file="docker-compose.yaml"
+#     fi
+#
+#     if [[ -n "$compose_file" ]]; then
+#       # Check if any containers are running for this compose file
+#       if docker-compose -f "$compose_file" ps -q | grep -q . 2>/dev/null; then
+#         echo "%F{green}[dc]%f"
+#       else
+#         echo "%F{red}[dc]%f"
+#       fi
+#     fi
+#   fi
+# }
 
 short_pwd() {
   local path=$PWD
@@ -212,7 +212,8 @@ short_pwd() {
 }
 
 PROMPT='%F{blue}oathless%f $(time_info) %F{#d4982a}$(short_pwd)%f $(python_venv_info) %# '
-RPROMPT='$(git_prompt_info) $(docker_compose_info)'
+# RPROMPT='$(git_prompt_info) $(docker_compose_info)'
+RPROMPT='$(git_prompt_info)'
 
 # Shell integrations
 eval "$(fzf --zsh)"

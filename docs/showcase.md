@@ -15,14 +15,3 @@ _Modern Neovim setup with LSP integration and custom themes_
 ![Tmux](./images/tmux.png)
 
 _Terminal multiplexer with custom status bar_
-
-## macOS Desktop
-
-### Sketchybar
-
-![Sketchybar](./images/sketchybar.png)
-
-_Custom macOS status bar replacement_
-
----
-

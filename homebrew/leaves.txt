@@ -11,7 +11,6 @@ docker
 eza
 fastfetch
 fd
-felixkratz/formulae/sketchybar
 fzf
 gdbm
 gemini-cli
@@ -19,20 +18,17 @@ ghostscript
 git
 gitleaks
 glow
-gopass
 gopls
 grpcurl
+himalaya
 imagemagick
-jandedobbeleer/oh-my-posh/oh-my-posh
 jq
 just
+lazydocker
 lazygit
 lua
 lua-language-server
 openssl@1.1
-pkgconf
-postgresql@13
-postgresql@14
 ruby-lsp
 ruff
 shellcheck
@@ -42,7 +38,6 @@ stow
 tectonic
 tlrc
 tmux
-tmux-sessionizer
 toilet
 tree-sitter
 typescript-language-server
@@ -51,6 +46,5 @@ viu
 websocat
 wireguard-tools
 yamllint
-yazi
 zlib
 zoxide

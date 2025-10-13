@@ -1,4 +1,6 @@
 .git
+.crush
+.github
 .gitignore
 .stowrc
 .DS_Store

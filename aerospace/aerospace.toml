@@ -13,13 +13,9 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 
-# Start sketchybar when starting aerospace
-after-startup-command = ['exec-and-forget sketchybar']
+after-startup-command = []
 
-# Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
-]
+exec-on-workspace-change = []
 
 # Start AeroSpace at login
 start-at-login = true
@@ -68,7 +64,7 @@ outer.right = 18
 outer.top = [
   { monitor."Built-in Retina Display" = 18 },
   { monitor."LG HDR 4K" = 44 },
-  18
+  18,
 ]
 
 # 'main' binding mode declaration
@@ -100,11 +96,6 @@ alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion vertical horizontal'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
-
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -157,7 +148,10 @@ esc = 'mode main'
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+f = [
+  'layout floating tiling',
+  'mode main',
+] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
 alt-shift-h = ['join-with left', 'mode main']
@@ -169,7 +163,7 @@ alt-shift-l = ['join-with right', 'mode main']
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace 1"
-                   
+
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
 run = "move-node-to-workspace 1"
@@ -202,4 +196,3 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.1password.1password' # 1Password
 run = 'layout floating'
-

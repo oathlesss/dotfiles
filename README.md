@@ -31,7 +31,6 @@ This repository contains configuration files for various tools and applications:
 - **[nvim](nvim/)** - Neovim configuration
 - **[tmux](tmux/)** - Terminal multiplexer configuration
 - **[kitty](kitty/)** - GPU-based terminal emulator
-- **[sketchybar](sketchybar/)** - macOS status bar replacement
 - **[aerospace](aerospace/)** - Window manager for macOS
 - **[ghostty](ghostty/)** - Terminal emulator configuration
 - **[git](git/)** - Git configuration
@@ -100,7 +99,6 @@ just brew-update
 
 Some components require additional setup steps after installation:
 
-- **SketchyBar**: See [SketchyBar README](sketchybar/README.md) for icons installation and configuration steps
 - **Tmux**: See [TMUX README](tmux/README.md) for TPM installation and plugin setup
 - **Neovim**: See [Neovim Docs](nvim/docs/) for customization, adding plugins/LSP, and troubleshooting
 
@@ -127,9 +125,10 @@ This project includes comprehensive tests using BATS (Bash Automated Testing Sys
 2. Run all tests: `just test`
 
 Tests are organized in the [tests/](tests/) directory and cover:
+
 - Syntax and configuration validation
 - Symlink validation
-- Integration tests for tools like Neovim, Tmux, Sketchybar
+- Integration tests for tools like Neovim, Tmux
 - Installation script validation
 - Custom script functionality
 
