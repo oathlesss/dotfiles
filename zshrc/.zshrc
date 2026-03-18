@@ -75,7 +75,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 
 # Eza
-alias l="eza -l --icons --git"
+alias l="eza -l --icons --git --group-directories-first"
 alias ls="eza --icons=always"
 alias lt="eza --tree --level=2 --icons"
 alias ltree="eza --tree --level=2 --long --icons"
@@ -83,6 +83,7 @@ alias ltree="eza --tree --level=2 --long --icons"
 # Nvim
 alias n="nvim"
 alias cnvim="NVIM_APPNAME=cnvim nvim"
+alias nvchad="NVIM_APPNAME=nvchad nvim"
 
 # Exported Paths
 export ZSH="$HOME/.config/zshrc"
@@ -228,3 +229,7 @@ fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

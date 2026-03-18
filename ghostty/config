@@ -1,5 +1,5 @@
-theme = Vague
-font-family = BerkeleyMono NerdFont
+theme = tokyonight_night
+font-family = Berkeley Mono
 font-size = 16
 window-width = 250
 window-height = 100
@@ -15,7 +15,7 @@ cursor-text = #000000
 mouse-hide-while-typing = true
 
 shell-integration = zsh
-fullscreen = true
+fullscreen = false
 title = " "
 
 config-file = ?./macos

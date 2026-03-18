@@ -1,0 +1,25 @@
+[user]
+name = "Ruben Hesselink"
+email = "rubenhesselink@outlook.com"
+
+[[--scope]]
+--when.repositories = ["~/work"]
+[--scope.user]
+name = "Ruben Hesselink"
+email = "ruben@fourdigits.nl"
+
+[signing]
+behavior = "own"
+backend = "ssh"
+key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBZuQHRq2R8+AwS2vlglQjyCfkBRfZ/iNFs9WHoTE9ii"
+
+[signing.backends.ssh]
+program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[ui]
+merge-editor = ":builtin"
+default-command = "log"
+
+[remotes.origin]
+auto-track-bookmarks = "*"
+auto-track-created-bookmarks = "*"
