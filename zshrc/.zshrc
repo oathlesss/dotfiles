@@ -101,7 +101,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export PATH="$HOME/.config/scripts:$PATH"
 
-bindkey -s '^F' 'tmux-sessionizer.sh\n'
+# bindkey -s '^F' 'tmux-sessionizer.sh\n'
 
 # Shell integrations
 eval "$(fzf --zsh)"
@@ -110,9 +110,9 @@ source <(COMPLETE=zsh tms)
 [ -s "/Users/rubenhesselink/.bun/_bun" ] && source "/Users/rubenhesselink/.bun/_bun"
 
 # Auto start tmux
-# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-#   tmux attach-session -t default || tmux new-session -s default
-# fi
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 
-vim.pack.add({
+local specs = {
   -- Treesitter
   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 
@@ -19,6 +19,19 @@ vim.pack.add({
 
   -- Picker
   "https://github.com/ibhagwan/fzf-lua",
+
+  -- Git
+  "https://github.com/lewis6991/gitsigns.nvim",
+
+  -- Statusline
+  "https://github.com/nvim-tree/nvim-web-devicons", -- Dependency of lualine
+  "https://github.com/nvim-lualine/lualine.nvim",
+
+  -- File tree
+  "https://github.com/stevearc/oil.nvim",
+
+  -- TODO Comments
+  "https://github.com/folke/todo-comments.nvim",
 
   -- Colorschemes
   "https://github.com/catppuccin/nvim",
@@ -30,4 +43,37 @@ vim.pack.add({
   "https://github.com/navarasu/onedark.nvim",
   "https://github.com/vague-theme/vague.nvim",
   "https://github.com/danilo-augusto/vim-afterglow",
-})
+  { src = "https://github.com/everviolet/nvim", name = "evergarden" },
+  "https://github.com/xero/miasma.nvim",
+  "https://github.com/trapd00r/neverland-vim-theme",
+  "https://github.com/bettervim/yugen.nvim",
+  "https://github.com/savq/melange-nvim",
+  "https://github.com/zootedb0t/citruszest.nvim",
+  "https://github.com/rockerBOO/boo-colorscheme-nvim",
+}
+
+local function spec_name(spec)
+  if type(spec) == "string" then
+    return spec:match("/([^/]+)%.git$") or spec:match("/([^/]+)$")
+  end
+
+  return spec.name or (spec.src:match("/([^/]+)%.git$") or spec.src:match("/([^/]+)$"))
+end
+
+local wanted = {}
+for _, spec in ipairs(specs) do
+  wanted[spec_name(spec)] = true
+end
+
+local stale = {}
+for _, plugin in ipairs(vim.pack.get()) do
+  if not wanted[plugin.spec.name] then
+    table.insert(stale, plugin.spec.name)
+  end
+end
+
+if #stale > 0 then
+  vim.pack.del(stale)
+end
+
+vim.pack.add(specs)

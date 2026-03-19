@@ -12,6 +12,13 @@ local managed_themes = {
   "onedark",
   "vague",
   "afterglow",
+  "evergarden",
+  "miasma",
+  "neverland",
+  "yugen",
+  "melange",
+  "citruszest",
+  "boo",
 }
 
 local managed_theme_set = {}
