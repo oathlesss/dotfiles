@@ -1,0 +1,18 @@
+# Berkeley Mono Nerd Font is locally patched from licensed Berkeley Mono OTF files.
+# Repatch steps:
+# 1) git clone --depth=1 https://github.com/ryanoasis/nerd-fonts /tmp/nerd-fonts
+# 2) for f in "$HOME/Library/Fonts/BerkeleyMono-Regular.otf" "$HOME/Library/Fonts/BerkeleyMono-Bold.otf" "$HOME/Library/Fonts/BerkeleyMono-Oblique.otf" "$HOME/Library/Fonts/BerkeleyMono-Bold-Oblique.otf"; do
+#      fontforge -script /tmp/nerd-fonts/font-patcher --complete --name filename --outputdir /tmp/berkeley-nerd-out "$f"
+#    done
+# 3) cp /tmp/berkeley-nerd-out/BerkeleyMonoNerdFont-*.otf "$HOME/Library/Fonts/"
+[font]
+size = 13.0
+normal = { family = "BerkeleyMono Nerd Font", style = "Regular" }
+
+[window]
+padding = { x = 8, y = 8 }
+decorations = "None"
+option_as_alt = "Both"
+
+[general]
+import = ["~/.config/theme/current/alacritty.toml"]

@@ -25,6 +25,9 @@ vim.pack.add({
   "https://github.com/folke/tokyonight.nvim",
   "https://github.com/ellisonleao/gruvbox.nvim",
   "https://github.com/rose-pine/neovim",
+  "https://github.com/rebelot/kanagawa.nvim",
+  "https://github.com/EdenEast/nightfox.nvim",
+  "https://github.com/navarasu/onedark.nvim",
+  "https://github.com/vague-theme/vague.nvim",
+  "https://github.com/danilo-augusto/vim-afterglow",
 })
-
-vim.cmd.colorscheme("rose-pine")

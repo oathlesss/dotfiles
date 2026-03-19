@@ -1,4 +1,5 @@
 local fzf = require("fzf-lua")
+local theme = require("theme")
 local map = vim.keymap.set
 
 -- Files
@@ -18,6 +19,30 @@ map("n", "<leader>fk", fzf.keymaps, { desc = "Find Keymaps" })
 map("n", "<leader>fh", fzf.helptags, { desc = "Find Help Tags" })
 map("n", "<leader>fd", fzf.diagnostics_workspace, { desc = "Workspace Diagnostics" })
 map("n", "<leader>fb", fzf.buffers, { desc = "Find Buffers" })
+
+map("n", "<leader>ft", function()
+  theme.set_picker_active(true)
+  theme.enforce_dark_background()
+  fzf.colorschemes({
+    colors = theme.get_managed_themes(),
+    live_preview = true,
+    actions = {
+      ["default"] = function(selected)
+        theme.set_picker_active(false)
+        if selected and selected[1] then
+          theme.apply_managed_theme(selected[1])
+        end
+      end,
+      ["esc"] = function()
+        theme.set_picker_active(false)
+        local saved = theme.get_saved_theme()
+        if saved then
+          theme.apply_managed_theme(saved)
+        end
+      end,
+    },
+  })
+end, { desc = "Pick Theme" })
 
 -- Git
 map("n", "<leader>gf", fzf.git_files, { desc = "Git Files" })
