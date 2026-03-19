@@ -1,9 +1,6 @@
-; [includeIf "gitdir:~/work/"]
-;   path = ~/work/.gitconfig
-
 [user]
   name = Ruben Hesselink
-  email = ruben@fourdigits.nl
+  email = rubenhesselink@outlook.com
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBZuQHRq2R8+AwS2vlglQjyCfkBRfZ/iNFs9WHoTE9ii
 
 [gpg]
@@ -92,3 +89,6 @@
 # URL shortcuts
 [url "git@github.com:"]
     insteadOf = "gh:"
+
+[includeIf "gitdir:~/work/"]
+  path = ~/.config/git/work
