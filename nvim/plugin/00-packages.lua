@@ -17,8 +17,14 @@ local specs = {
   -- Completion
   { src = "https://github.com/Saghen/blink.cmp", version = "v1.*" },
 
+  -- Utils
+  "https://github.com/nvim-lua/plenary.nvim",
+
   -- Picker
   "https://github.com/ibhagwan/fzf-lua",
+
+  -- Harpoon
+  { src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
 
   -- Git
   "https://github.com/lewis6991/gitsigns.nvim",

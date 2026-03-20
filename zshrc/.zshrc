@@ -73,6 +73,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias cd="z"
 alias ..="cd .."
 alias ...="cd ../.."
+alias STOPPER='docker kill $(docker ps -q)'
 
 # Eza
 alias l="eza -l --icons --git --group-directories-first"
@@ -83,7 +84,6 @@ alias ltree="eza --tree --level=2 --long --icons"
 # Nvim
 alias n="nvim"
 alias cnvim="NVIM_APPNAME=cnvim nvim"
-alias nvchad="NVIM_APPNAME=nvchad nvim"
 
 # Exported Paths
 export ZSH="$HOME/.config/zshrc"
