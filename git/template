@@ -1,12 +1,27 @@
-# feat:
-# fix:
-# style:
-# ci:
-# deploy:
-# chore:
-# docs:
-# refactor
-# perf:
-# test:
-# debug:
-# BREAKING CHANGE:
+
+
+# RULES:
+# 1. Update requirements: Needs the uv output as secondary message:
+#    (Example):
+#    Update requirements
+#
+#    Updated blessed v1.33.0 -> v1.34.0
+#    Updated boto3 v1.42.69 -> v1.42.77
+#    Updated botocore v1.42.69 -> v1.42.77
+#    Updated celery v5.6.2 -> v5.6.3
+#    Updated cryptography v46.0.5 -> v46.0.6
+#    Updated cyclonedx-python-lib v11.6.0 -> v11.7.0
+#    Updated django-health-check v4.1.2 -> v4.2.1
+#    Updated django-stubs v6.0.0 -> v6.0.1
+#    Updated django-stubs-ext v6.0.0 -> v6.0.1
+#    Updated djangorestframework v3.16.1 -> v3.17.1
+#    Updated faker v40.11.0 -> v40.11.1
+#    Updated griffelib v2.0.0 -> v2.0.1
+#    Updated gunicorn v25.1.0 -> v25.3.0
+#    Updated jinxed v1.3.0 -> v1.4.0
+#    Updated mkdocs-material v9.7.5 -> v9.7.6
+#    Updated pytest-cov v7.0.0 -> v7.1.0
+#    Updated requests v2.32.5 -> v2.33.0
+#    Updated ruff v0.15.6 -> v0.15.8
+#    Updated sentry-sdk v2.55.0 -> v2.56.0
+#    Updated tomli v2.4.0 -> v2.4.1
