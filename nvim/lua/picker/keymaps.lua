@@ -44,9 +44,3 @@ map("n", "<leader>ft", function()
     },
   })
 end, { desc = "Pick Theme" })
-
--- Git
-map("n", "<leader>gf", fzf.git_files, { desc = "Git Files" })
-map("n", "<leader>gc", fzf.git_commits, { desc = "Git Commits" })
-map("n", "<leader>gb", fzf.git_branches, { desc = "Git Branches" })
-map("n", "<leader>gd", fzf.git_diff, { desc = "Git Diff" })

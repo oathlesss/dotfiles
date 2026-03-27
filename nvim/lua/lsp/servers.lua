@@ -27,7 +27,22 @@ return {
   },
 
   vtsls = {
-    filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
+    cmd = { "vtsls", "--stdio" },
+    init_options = {
+      hostInfo = "neovim",
+    },
+    filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact", "tsx", "ts", "js", },
   },
+
+  -- djlsp = {
+  --   cmd = { "/Users/rubenhesselink/personal/repos/django-template-lsp/env/bin/djlsp", "--enable-log"},
+  --   filetypes = { "htmldjango", "django-html", "html" },
+  --   root_markers = { "manage.py", ".git" },
+  --   init_options = {
+  --     docker_compose_file = "docker-compose.yml",
+  --     docker_compose_service = "django",
+  --     cache = true,
+  --   },
+  -- },
 }
 

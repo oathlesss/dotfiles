@@ -19,6 +19,7 @@ local specs = {
 
   -- Utils
   "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/folke/which-key.nvim",
 
   -- Picker
   "https://github.com/ibhagwan/fzf-lua",
@@ -28,6 +29,7 @@ local specs = {
 
   -- Git
   "https://github.com/lewis6991/gitsigns.nvim",
+  "https://github.com/tpope/vim-fugitive",
 
   -- Statusline
   "https://github.com/nvim-tree/nvim-web-devicons", -- Dependency of lualine
