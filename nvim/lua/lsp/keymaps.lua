@@ -11,7 +11,7 @@ M.attach = function(_, bufnr)
   map("K",          vim.lsp.buf.hover,                                   "Hover Docs")
   map("<leader>rn", vim.lsp.buf.rename,                                  "Rename")
   map("<leader>ca", vim.lsp.buf.code_action,                             "Code Action")
-  map("<leader>f",  function() vim.lsp.buf.format({ async = true }) end, "Format")
+  map("<leader>F",  function() vim.lsp.buf.format({ async = true }) end, "Format")
   map("[d",         vim.diagnostic.goto_prev,                            "Prev Diagnostic")
   map("]d",         vim.diagnostic.goto_next,                            "Next Diagnostic")
 end

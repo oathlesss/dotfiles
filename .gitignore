@@ -1,4 +1,6 @@
 .DS_Store
-.aider*
 *.tmp
-pnvim
+node_modules
+.nvimlog
+package.json
+package-lock.json

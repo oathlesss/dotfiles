@@ -2,6 +2,7 @@ ast-grep
 autoconf-archive
 automake
 basedpyright
+bash-language-server
 bats-core
 bzip2
 caarlos0/tap/timer
@@ -15,6 +16,7 @@ colima
 docker
 docker-buildx
 docker-compose
+docker-language-server
 eza
 fastfetch
 fd
@@ -44,8 +46,10 @@ lazydocker
 lazygit
 lima-additional-guestagents
 llvm@20
+llvm@21
 lua
 lua-language-server
+marksman
 minio-mc
 mole
 nasm
@@ -73,13 +77,17 @@ tmux-sessionizer
 tobi/try/try
 toilet
 tree-sitter
+tree-sitter-cli
 typescript-language-server
 unhappychoice/tap/gittype
 uv
 viu
+vscode-langservers-extracted
 vtsls
 websocat
 wireguard-tools
+worktrunk
+yaml-language-server
 yamllint
 yazi
 zlib

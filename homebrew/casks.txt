@@ -5,6 +5,7 @@ beekeeper-studio
 betterdisplay
 brave-browser
 codex
+codex-app
 discord
 eset-cyber-security
 font-iosevka
@@ -12,6 +13,7 @@ font-noto-sans-mono
 font-sf-pro
 font-symbols-only-nerd-font
 font-victor-mono-nerd-font
+google-chrome
 iina
 keycastr
 kitty
